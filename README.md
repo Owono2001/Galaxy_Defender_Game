@@ -2,7 +2,7 @@
 
 A space shooter game built with React
 
-![Game Screenshot](./public/screenshot.png) <!-- Add a screenshot later -->
+![Game Screenshot](./public/GameGalaxy.jpeg) <!-- Add a screenshot later -->
 
 ## Features
 - Shoot enemies with laser clicks
