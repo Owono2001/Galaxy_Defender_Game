@@ -1,0 +1,313 @@
+/* App.css */
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+  font-size: 1.2em;
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+.game-area {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: linear-gradient(to bottom, #000428 0%, #004e92 100%);
+  cursor: crosshair;
+  overflow: hidden;
+}
+
+.laser {
+  position: absolute;
+  width: 3px;
+  height: 20px;
+  background: #ff0000;
+  box-shadow: 0 0 15px #ff0000;
+  transition: top 0.1s linear;
+}
+
+.enemy {
+  position: absolute;
+  font-size: 2em;
+  transform: translate(-50%, -50%);
+  animation: float 3s infinite;
+}
+
+.enemy.normal {
+  color: #00ff00;
+  text-shadow: 0 0 20px #00ff00;
+}
+
+.enemy.boss {
+  font-size: 3em;
+  color: #ff00ff;
+  text-shadow: 0 0 30px #ff00ff;
+  animation: pulse 1s infinite;
+}
+
+.power-up {
+  position: absolute;
+  font-size: 1.5em;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  animation: float 2s infinite;
+}
+
+.start-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+button {
+  padding: 15px 30px;
+  background: #00f7ff;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #00f7ff;
+}
+
+.instructions {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #00f7ff;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* App.css */
+/* Add these new styles */
+.enemy.speeder {
+  color: #ff0000;
+  text-shadow: 0 0 20px #ff0000;
+  animation: dash 0.5s infinite;
+}
+
+.health-bar {
+  position: absolute;
+  bottom: -10px;
+  width: 100%;
+  height: 3px;
+  background: #333;
+}
+
+.health-bar div {
+  height: 100%;
+  background: #00ff00;
+  transition: width 0.3s ease;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+@keyframes dash {
+  0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+  50% { transform: translate(-50%, -50%) translateX(10px); }
+}
+
+/* Add media queries for mobile */
+@media (max-width: 600px) {
+  .hud {
+    font-size: 1em;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .enemy {
+    font-size: 1.5em;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+  }
+}
+
+/* Add these to App.css */
+.game-over {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: gameOverEnter 0.5s ease-out;
+}
+
+.game-over h2 {
+  color: #ff0000;
+  font-size: 3em;
+  margin: 0;
+  text-shadow: 0 0 20px #ff0000;
+}
+
+.final-score {
+  font-size: 1.5em;
+  color: #00f7ff;
+  margin: 10px 0;
+}
+
+@keyframes gameOverEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.start-screen {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0, 247, 255, 0.3);
+}
+
+
+/* Add these new styles */
+.parallax-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(180deg, #000000 0%, #000000 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+  background-size: 100% 100%, 50px 50px;
+  animation: starScroll 100s linear infinite;
+}
+
+@keyframes starScroll {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, 0 1000px; }
+}
+
+.explosion {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('data:image/svg+xml,...') center/contain;
+  animation: explode 0.5s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+.trail-effect {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255,0,0,0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Enhanced visual effects */
+.game-area {
+  transform: translate(calc(var(--shake) * 1px), 0);
+  transition: transform 0.1s;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ff0000;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: var(--life);
+}
+
+.crosshair {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" stroke="%2300f7ff" stroke-width="3" fill="none"/><line x1="50" y1="10" x2="50" y2="30" stroke="%2300f7ff"/><line x1="50" y1="70" x2="50" y2="90" stroke="%2300f7ff"/><line x1="10" y1="50" x2="30" y2="50" stroke="%2300f7ff"/><line x1="70" y1="50" x2="90" y2="50" stroke="%2300f7ff"/></svg>');
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Mobile controls */
+.touch-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: none;
+  justify-content: space-between;
+  padding: 0 20px;
+  touch-action: manipulation;
+}
+
+.touch-joystick {
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+}
+
+/* Powerup effects */
+.power-up.temporal {
+  animation: temporal 2s infinite;
+}
+
+@keyframes temporal {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .game-area {
+    cursor: none;
+  }
+  
+  .touch-controls {
+    display: flex;
+  }
+  
+  .crosshair {
+    display: none;
+  }
+}
