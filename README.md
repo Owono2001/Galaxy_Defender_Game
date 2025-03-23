@@ -1,6 +1,11 @@
+markdown
+Copy
 # Galaxy Defender 🚀👾
 
-A space shooter game built with React
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=Owono2001&style=flat-square&color=7DF9FF" alt="Profile Views">
+  <p style="font-family: 'Space Mono', monospace; color: #7DF9FF; font-size: 1.2em;">Your visit sparks innovation! 🔥</p>
+</div>
 
 ![Game Screenshot](./public/GameGalaxy.jpeg) <!-- Add a screenshot later -->
 
